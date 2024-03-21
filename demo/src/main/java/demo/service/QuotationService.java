@@ -53,12 +53,20 @@ public class QuotationService {
             updatePrice.set(true);
         }
         else {
-            QuotationEntity lastDollarPrice = quotationEntities.getLast();
+            int last = quotationEntities.size();
 
-            if (currentPrice.floatValue() > lastDollarPrice.getCurrencyPrice().floatValue()) {
-                saveQuotation(currencyPriceDTO);
-                updatePrice.set(true);
+            if (last > 1) {
+                
+                QuotationEntity lastDollarPrice = quotationEntities.get(last);
+
+                if (currentPrice.floatValue() > lastDollarPrice.getCurrencyPrice().floatValue()) {
+                    saveQuotation(currencyPriceDTO);
+                    updatePrice.set(true);
+                }
+            } else {
+                throw new RuntimeException("Error when load last dollar price");
             }
+
         }
 
         return updatePrice.get();

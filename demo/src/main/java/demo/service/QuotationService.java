@@ -9,6 +9,7 @@ import demo.repository.QuotationRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.hibernate.service.spi.InjectService;
 
 import java.math.BigDecimal;
 import java.util.Date;

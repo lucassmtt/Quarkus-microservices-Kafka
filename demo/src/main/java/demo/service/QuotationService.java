@@ -8,6 +8,8 @@ import demo.message.KafkaEvents;
 import demo.repository.QuotationRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.rest.client.ext.DefaultClientHeadersFactoryImpl;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.hibernate.service.spi.InjectService;
 
@@ -17,10 +19,11 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @ApplicationScoped
-public class QuotationService {
+public class QuotationService  {
 
-    @Inject
+
     @RestClient
+    @Inject
     CurrencyPriceClient currencyPriceClient;
 
     @Inject
